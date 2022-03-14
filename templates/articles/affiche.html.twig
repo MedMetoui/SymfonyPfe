@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<H1>Liste Articles</h1>
+{# for cle in res === foreach($res as $cle) in PDO#}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Description</th>
+       <th scope="col">Date</th>
+       <th scope="col" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cle in res %}
+    <tr>
+      <th scope="row"> {{cle.id}}</th>
+      <td> {{cle.nom}}</td>
+       <td> {{cle.prix}}</td>
+      <td> {{cle.description}}</td>
+      <td> {{cle.date | date('Y-m-d')}}</td>
+      <td><a href="{{path('deleteArticle',{'id':cle.id})}}" class="btn btn-danger">Delete</a></td>
+      <td><a href="{{path('UpdateArticle',{'id':cle.id})}}" class="btn btn-success">Modifier</a></td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+  
+{% endblock %}

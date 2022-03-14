@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+{% block  body %}
+{% set role=app.session.get('users').role %}
+<h1>Vous êtes {{role}}</h1>
+<a href="{{path('deconnexion')}}">Déconnexion</a>
+
+
+
+{% endblock %} 
